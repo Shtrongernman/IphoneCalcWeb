@@ -1,12 +1,12 @@
-let a = ''; // первое число
-let b = ''; // второе число
-let sign = ''; // знак операции
+let a = ''; // First number
+let b = ''; // Second number
+let sign = ''; // operation sign
 let finish = false;
 
 const digit = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
 const action = ['-', '+', 'X', '/'];
 
-// экран
+// screen
 const out = document.querySelector('.calc-screen p');
 
 function clearAll () {
@@ -20,15 +20,15 @@ function clearAll () {
 document.querySelector('.ac').onclick = clearAll;
 
 document.querySelector('.buttons').onclick = (event) => {
-    // нажата не кнопка
+    // no button pressed
     if(!event.target.classList.contains('btn')) return;
-    // нажата кнопка ac
+    // pressed button ac
     if(event.target.classList.contains('ac')) return;
     
     out.textContent = '';
-    // получаю нажатую кнопку
+    // get pressed button
     const key = event.target.textContent;
-    // если нажата клавиша 0-9
+    // if key 0-9 is pressed
     if (digit.includes(key)) {
         if (b =='' && sign === '') {
         a+=key;
@@ -49,7 +49,7 @@ document.querySelector('.buttons').onclick = (event) => {
         return;
     }
     
-    // если нажата клавиша + - / X
+    // if the + - / X key is pressed
     if (action.includes(key)) {
         sign = key;
         out.textContent = sign;
@@ -57,7 +57,7 @@ document.querySelector('.buttons').onclick = (event) => {
         return;
     }
 
-    // нажата =
+    // pressed =
     if (key === '=') {
         switch (sign) {
             case "+":
@@ -71,7 +71,7 @@ document.querySelector('.buttons').onclick = (event) => {
                 break;
             case "/":
                 if (b === '0') {
-                    out.textContent = 'Ошибка';
+                    out.textContent = 'Error';
                     a='';
                     b='';
                     sign = '';
